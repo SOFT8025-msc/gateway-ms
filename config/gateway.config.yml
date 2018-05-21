@@ -19,7 +19,7 @@ apiEndpoints:
   ui:
     host: '*'
     paths:
-      - /ui
+      - /*
 serviceEndpoints:
   products:
     url: ${PRODUCTS_API}
