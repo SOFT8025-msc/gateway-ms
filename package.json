@@ -1,0 +1,12 @@
+{
+  "name": "gateway-ms",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "cross-env PRODUCTS_API=https://product-ms-java.herokuapp.com UI_URL=https://assignment-ui.cfapps.io CUSTOMER_API=https://customer-ms-java.herokuapp.com node ."
+  },
+  "dependencies": {
+    "cross-env": "^5.1.5",
+    "express-gateway": "^1.8.0"
+  }
+}

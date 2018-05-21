@@ -1,0 +1,9 @@
+name: msc-blog-gateway
+instances: 1
+memory: 100M
+buildpack: nodejs_buildpack
+command: node .
+env:
+    OPTIMIZE_MEMORY : true
+    NODE_ENV: production
+    PRODUCT_API: https://product-ms-java.cfapps.io

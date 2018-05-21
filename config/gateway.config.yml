@@ -1,0 +1,56 @@
+http:
+  port: 8080
+admin:
+  port: 9876
+  hostname: localhost
+apiEndpoints:
+  products:
+    host: '*'
+    paths:
+      - /brands/*
+      - /categories/*
+      - /products/*
+      - /stockElements/*
+  customers:
+    host: '*'
+    paths:
+      - /customers/*
+      - /shippingAddresses/*
+  ui:
+    host: '*'
+    paths:
+      - /ui
+serviceEndpoints:
+  products:
+    url: ${PRODUCTS_API}
+  customers:
+    url: ${CUSTOMER_API}
+  ui:
+    url: ${UI_URL}
+policies:
+  - proxy
+pipelines:
+  - products:
+    apiEndpoints:
+      - products
+    policies:
+      - proxy:
+        - action:
+            serviceEndpoint: products
+            changeOrigin: true
+  - customers:
+    apiEndpoints:
+      - customers
+    policies:
+      - proxy:
+        - action:
+            serviceEndpoint: customers
+            changeOrigin: true
+  - ui:
+    apiEndpoints:
+      - ui
+    policies:
+      - proxy:
+        - action:
+            serviceEndpoint: ui
+            changeOrigin: true
